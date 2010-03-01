@@ -9,6 +9,11 @@
         #logo
           %h1
             %a{:href => '/'}= SiteConfig.title
+      #nav
+        Show
+        %a{:href => '#'} All 
+        \|
+        %a{:href => '#' } by Style
       #content= yield
       #footer
         %p#legal= "&mdash; &copy; #{Time.now.strftime('%Y')} #{SiteConfig.author} &mdash;"
