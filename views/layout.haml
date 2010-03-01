@@ -1,0 +1,14 @@
+!!!
+%html
+  %head
+    %title= @title || SiteConfig.title
+    %link{:href => '/stylesheets/master.css', :rel => 'stylesheet', :type => 'text/css'}
+  %body
+    #wrapper
+      #branding
+        #logo
+          %h1
+            %a{:href => '/'}= SiteConfig.title
+      #content= yield
+      #footer
+        %p#legal= "&mdash; &copy; #{Time.now.strftime('%Y')} #{SiteConfig.author} &mdash;"
