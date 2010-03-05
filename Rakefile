@@ -26,15 +26,37 @@ namespace :db do
   
   desc 'Bootstraps the database'
   task :bootstrap => :environment do
-    [ ['Davison, Archibald T and Apel, Willi', 'Harvard University Press', 'Cambridge, Massachusetts', 1949, 4, 'First title', 'Historical Anthology of Music: Oriental, Medieval and Renaissance Music', 'Anthology'],
-      ['Schering, Arnold', 'Veb Brietkopf & Hartel Muskverlag', 'Leipzig', 1931, 1, '2nd title', 'Geschiecte Der Musik In Beispielen: Drehundertfunfzig Tonsatze Aus Neun Jahrhunderten', 'Anthology'],
-      ['Beethoven, Ludwig Van', 'Boosey & Co.', 'New York', 1948, 1, 'Fidelio', 'Vocal Score with Piano Reduction', 'Opera']
-    ].each do |properties|
-      album = Album.new
-      properties.map { |author, publisher, location, year, edition, title, detail, style| album.attributes = {:author => author, :publisher => publisher, :location => location, :year => year, :edition => edition, :title => title, :detail => detail, :style => style }}
-      album.save!
+    Album.create!(
+      :author => "Davison, Archibald T and Apel, Willi",
+      :publisher => "Harvard University Press",
+      :location => "Cambridge, Massachusetts",
+      :year => 1949,
+      :edition => 4,
+      :title => "First title",
+      :detail => "Historical Anthology of Music: Oriental, Medieval and Renaissance Music",
+      :style => "Anthology"
+    )
+    Album.create!(
+      :author => "Schering, Arnold",
+      :publisher => "Veb Brietkopf & Hartel Muskverlag",
+      :location => "Leipzig",
+      :year => 1931,
+      :edition => 1,
+      :title => "2nd title",
+      :detail => "Geschiecte Der Musik In Beispielen: Drehundertfunfzig Tonsatze Aus Neun Jahrhunderten",
+      :style => "Anthology"
+    )
+    Album.create!(
+      :author => "Beethoven, Ludwig Van",
+      :publisher => "Boosey & Co.",
+      :location => "New York",
+      :year => 1948,
+      :edition => 1,
+      :title => "Fidelio",
+      :detail => "Vocal Score with Piano Reduction",
+      :style => "Opera"
+    )
     end
-  end
 end
 
 # this one is the one that is needed to be able to call on the models in the db rake methods
