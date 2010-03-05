@@ -9,6 +9,7 @@ gem 'dm-aggregates', '0.10.2'
 gem 'dm-timestamps', '0.10.2'
 gem 'do_sqlite3', '0.10.1.1'
 gem 'ostructable', '1.0.0'
+# gem 'csv-mapper', '0.0.4'
 
 group :development do
   gem 'thin', '1.2.5'

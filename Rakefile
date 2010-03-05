@@ -1,4 +1,6 @@
 require 'spec/rake/spectask'
+require 'csv'
+
 
 task :default => :test
 task :test => :spec
@@ -56,6 +58,20 @@ namespace :db do
       :detail => "Vocal Score with Piano Reduction",
       :style => "Opera"
     )
+    end
+    
+    desc 'Imports library from csv file'
+    task :import => :environment do
+      inv = CSV.parse(File.open("data/library_data.csv", "rb").read.gsub("\r", "\n").strip)
+      inv_headers = inv.shift.map { |i| i.to_s}
+      inv_strings = inv.map { |row | row.map { |cell| cell.to_s }}
+      inv_hashes = inv_strings.map { |row| Hash[*inv_headers.zip(row).flatten]}
+
+      inv_hashes.each do |r|
+        author = r['author']
+        title = r['title']
+      	Album.create!(:author => author, :title => title)
+      end
     end
 end
 
